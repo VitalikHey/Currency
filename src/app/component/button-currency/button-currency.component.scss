@@ -15,16 +15,16 @@
   height: 35px;
   padding: 0 0 0 0;
   background-color: #f4f4f4;
-  display: flex;             /* Используем Flexbox для центрирования текста */
-  justify-content: center;  /* Центрирование по горизонтали */
-  align-items: center;      /* Центрирование по вертикали */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: background-color 0.3s;
   color: #292929;
   font-weight: 500;
-  font-size: 16px
+  font-size: 16px;
 }
 
 .currency__input.mat-button-toggle-checked {
-  background-color: #7dbd42;  /* Задаем зеленый фон для нажатой кнопки */
-  color: white;             /* Меняем цвет текста на белый для контраста */
+  background-color: #7dbd42;
+  color: white;
 }

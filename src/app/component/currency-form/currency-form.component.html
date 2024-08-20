@@ -1,6 +1,11 @@
 <div class="form-departure__component">
-  <div class="main-title__form">
-    Вы отправили
-  </div>
- <app-button-currency></app-button-currency>
+  <div class="main-title__form">Вы отправили</div>
+  <app-button-currency></app-button-currency>
+  <mat-button-toggle-group class="currency__button-group">
+    <mat-button-toggle
+      *ngFor="let name of nameButtonCurrency"
+      class="currency__button"
+      >{{ name }}</mat-button-toggle
+    >
+  </mat-button-toggle-group>
 </div>

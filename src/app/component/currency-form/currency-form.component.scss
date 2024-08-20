@@ -20,3 +20,28 @@
   position: absolute;
 }
 
+.currency__button-group {
+  border: none !important;
+  margin-left: 24px;
+  margin-right: 23px;
+  margin-top: 140px;
+}
+
+.currency__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 27px;
+  border-radius: 6px;
+  border: none !important;
+}
+
+.currency__button.mat-button-toggle-checked {
+  border: 1.6px solid #7dbd42 !important;
+  background-color: #f4f4f4 !important;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  padding-inline: 0 !important;
+  padding-block: 0 !important;
+}
+
