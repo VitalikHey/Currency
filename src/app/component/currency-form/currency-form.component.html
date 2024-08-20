@@ -1,11 +1,57 @@
 <div class="form-departure__component">
-  <div class="main-title__form">Вы отправили</div>
-  <app-button-currency></app-button-currency>
+  <div class="main-title__form">{{ valueTitle }}</div>
+  <app-button-currency (outputValue)="addCryptoOrCurrency($event)"></app-button-currency>
   <mat-button-toggle-group class="currency__button-group">
+    <ng-container *ngIf="cryptoOrCurrency === 'currency'">
+      <mat-button-toggle
+        (click)="processingValueCurrencyCode(currency.code)"
+        *ngFor="let currency of nameButtonCurrency"
+        class="currency__button"
+      >{{ currency.name }}</mat-button-toggle
+      >
+    </ng-container>
     <mat-button-toggle
-      *ngFor="let name of nameButtonCurrency"
+      *ngIf="cryptoOrCurrency === 'crypto'"
       class="currency__button"
-      >{{ name }}</mat-button-toggle
+    >Криптовалюта</mat-button-toggle
     >
   </mat-button-toggle-group>
+  <mat-selection-list *ngIf="cryptoOrCurrency === 'currency'" class="scrollable-list">
+    <mat-list-item
+      class="mat-list-option"
+      (click)="processingValueNameIconBank(nameBank)"
+      *ngFor="let nameBank of nameButtonRusBankList let i = index"
+    >
+      <div class="bank__icon">
+        <div style="margin-top: 6px">
+          <img
+            [ngSrc]="'assets/icons/currency/' + nameBank + '.svg'"
+            alt="{{ nameBank }}"
+            width=32
+            height=32
+          />
+        </div>
+        <span class="bank-name">{{ nameButtonRusBankListRussian[i] }}</span>
+      </div>
+    </mat-list-item>
+  </mat-selection-list>
+  <mat-selection-list class="scrollable-list" *ngIf="cryptoOrCurrency === 'crypto'">
+    <mat-list-item
+      (click)="processingValueNameIconCrypto(nameCrypto.name, nameCrypto.code)"
+      class="mat-list-option"
+      *ngFor="let nameCrypto of nameButtonCryptoList let i = index"
+    >
+      <div class="bank__icon">
+        <div style="margin-top: 6px">
+          <img
+            [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
+            alt="{{ nameCrypto.name }}"
+            width=32
+            height=32
+          />
+        </div>
+        <span class="bank-name">{{ nameButtonCryptoList[i].name }}</span>
+      </div>
+    </mat-list-item>
+  </mat-selection-list>
 </div>

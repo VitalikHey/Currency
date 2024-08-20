@@ -1,7 +1,7 @@
 .form-departure__component {
   border-radius: 20px;
   width: 397px;
-  height: 1171px;
+  height: 700px;
   box-shadow: 0 0 24px 0 rgba(90, 89, 89, 0.1);
   background: var(--base);
   margin-left: 150px;
@@ -45,3 +45,50 @@
   padding-block: 0 !important;
 }
 
+//Убрать дубликацию кода
+
+.mat-list-option {
+  border-radius: 12px !important;
+  width: 333px !important;
+  height: 72px !important;
+  margin-left: 24px !important;
+  margin-bottom: 8px !important;
+  display: flex;
+  align-items: center;
+  //Вот тут менять цвет фона при нажатии
+  //background-color: #E9FFD6 !important;
+}
+
+.bank__icon {
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px 0 rgba(40, 46, 34, 0.12);
+  margin: 5px 5px 5px 5px;
+}
+
+.bank-name {
+  position: absolute;
+  margin-left: 50px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #292929;
+}
+
+.scrollable-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7DBD42;
+  border-radius: 4px;
+}
