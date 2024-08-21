@@ -33,14 +33,14 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   private destroy$: Subject<void> = new Subject();
   private valueCodeSubject$: Subject<Array<string>> = new Subject();
 
-  protected arrayCurrencyCode: Array<string> = []; // Инициализируем как пустой массив
+  protected arrayCurrencyCode: Array<string> = [];
   protected giveCurrencyCodeValue: number = 0;
   protected getCurrencyCodeValue: number = 0;
 
   constructor(private serviceCurrency: GetApiCurrencyService) {}
 
   public ngOnInit(): void {
-    this.arrayCurrencyCode = [this.giveCurrencyCode, this.getCurrencyCode]; // Инициализируем массив в ngOnInit
+    this.arrayCurrencyCode = [this.giveCurrencyCode, this.getCurrencyCode];
 
     this.valueCodeSubject$
       .pipe(
