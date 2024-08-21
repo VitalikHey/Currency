@@ -11,9 +11,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { GetApiCurrencyService } from './component/services/get-api-currency.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgOptimizedImage } from '@angular/common';
+import { ExchangeComponent } from './component/exchange/exchange.component';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, CurrencyFormComponent, ButtonCurrencyComponent],
+  declarations: [
+    AppComponent,
+    CurrencyFormComponent,
+    ButtonCurrencyComponent,
+    ExchangeComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -22,6 +30,10 @@ import { NgOptimizedImage } from '@angular/common';
     MatIconModule,
     HttpClientModule,
     NgOptimizedImage,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [GetApiCurrencyService],
   bootstrap: [AppComponent],

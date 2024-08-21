@@ -7,24 +7,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  protected codeValueFirst: string = '';
-  protected nameIconFirst: string = '';
-  protected codeValueSecond: string = '';
-  protected nameIconSecond: string = '';
+  protected codeValueGive: string = '';
+  protected nameIconGive: string = '';
+  protected codeValueGet: string = '';
+  protected nameIconGet: string = '';
 
-  protected handleValueCodeCurrencyFirst(value: string): void {
-    this.codeValueFirst = value;
+  protected handleValueCodeCurrencyGive(value: string): void {
+    this.codeValueGive = value;
   }
 
-  protected handleValueNameIconFirst(value: string): void {
-    this.nameIconFirst = value;
+  protected handleValueNameIconGive(value: string): void {
+    this.nameIconGive = value;
   }
 
-  protected handleValueCodeCurrencySecond(value: string): void {
-    this.codeValueSecond = value;
+  protected handleValueCodeCurrencyGet(value: string): void {
+    this.codeValueGet = value;
   }
 
-  protected handleValueNameIconSecond(value: string): void {
-    this.nameIconSecond = value;
+  protected handleValueNameIconGet(value: string): void {
+    this.nameIconGet = value;
   }
 }

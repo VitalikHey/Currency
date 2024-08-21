@@ -1,0 +1,38 @@
+<div class="exchange__component">
+  <span class="exchange__title">Обмен</span>
+  <span class="input-give__label">Отдаёте</span>
+  <img
+    *ngIf="giveIconName"
+    [src]="'assets/icons/currency/' + giveIconName + '.svg'"
+    alt="{{ getIconName }}"
+    width=32
+    height="32"
+  />
+  <mat-form-field  class="exchange__form-field-give">
+    <input
+      class="exchange__input"
+      type="text"
+      [formControl]="formGroupExchange.controls.formGive"
+      matInput
+    />
+  </mat-form-field>
+  <div style="margin-top: 20px">
+    <span style="margin-left: 23px; margin-bottom: -10px" class="input-get__label">Получаете</span>
+    <img
+      *ngIf="getIconName"
+      [src]="'assets/icons/currency/' + getIconName + '.svg'"
+      alt="{{ getIconName }}"
+      width=32
+      height="32"
+    />
+    <mat-form-field  style="margin-left: 23px; margin-bottom: -10px" class="exchange__form-field-get">
+      <input
+        class="exchange__input"
+        type="text"
+        [formControl]="formGroupExchange.controls.formGet"
+        matInput
+      />
+    </mat-form-field>
+  </div>
+</div>
+<button (click)="handleClick()">Кнопка</button>
