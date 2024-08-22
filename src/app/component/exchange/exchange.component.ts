@@ -9,14 +9,7 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { FormGroupExchange, ServiceResponse } from '../data-type';
 import { GetApiCurrencyService } from '../services/get-api-currency.service';
-import {
-  catchError,
-  Observable,
-  of,
-  Subject,
-  switchMap,
-  takeUntil,
-} from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-exchange',
@@ -31,57 +24,51 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public getCurrencyCode: string = '';
 
   private destroy$: Subject<void> = new Subject();
-  private valueCodeSubject$: Subject<Array<string>> = new Subject();
+  private responseServer: Record<string, { code: string; value: number }> = {
+    key: {
+      code: '',
+      value: 0,
+    },
+  };
 
-  protected arrayCurrencyCode: Array<string> = [];
-  protected giveCurrencyCodeValue: number = 0;
-  protected getCurrencyCodeValue: number = 0;
-
+  protected sumGetCurrency: number = 0;
   constructor(private serviceCurrency: GetApiCurrencyService) {}
 
   public ngOnInit(): void {
-    this.arrayCurrencyCode = [this.giveCurrencyCode, this.getCurrencyCode];
-
-    this.valueCodeSubject$
-      .pipe(
-        switchMap((): Observable<ServiceResponse> => {
-          return this.serviceCurrency.getApiCurrency().pipe(
-            takeUntil(this.destroy$),
-            catchError((error) => {
-              console.error('Error fetching currency data:', error);
-              return of();
-            }),
-          );
-        }),
-      )
+    this.serviceCurrency
+      .getApiCurrency()
+      .pipe(takeUntil(this.destroy$))
       .subscribe((value: ServiceResponse): void => {
-        if (value.data && value.data[this.arrayCurrencyCode[0]]) {
-          this.giveCurrencyCodeValue =
-            value.data[this.arrayCurrencyCode[0]].value;
-        }
-        if (value.data && value.data[this.arrayCurrencyCode[1]]) {
-          this.getCurrencyCodeValue =
-            value.data[this.arrayCurrencyCode[1]].value;
-        }
+        this.responseServer = value.data;
       });
+
+    this.formGroupExchange.controls.formGive.valueChanges.subscribe(() => {
+      this.changeValueFormGive();
+    });
   }
 
   public ngOnChanges(): void {
-    this.arrayCurrencyCode = [this.giveCurrencyCode, this.getCurrencyCode];
-    this.valueCodeSubject$.next(this.arrayCurrencyCode);
+    this.changeValueFormGive();
   }
 
-  protected handleClick(): void {
-    console.log(this.giveCurrencyCodeValue / this.getCurrencyCodeValue);
+  protected changeValueFormGive() {
+    this.formGroupExchange.controls.formGet.setValue(0);
+    if (this.formGroupExchange.controls.formGive.value) {
+      this.formGroupExchange.controls.formGet.setValue(
+        this.formGroupExchange.controls.formGive.value *
+          (this.responseServer[this.getCurrencyCode].value /
+            this.responseServer[this.giveCurrencyCode].value),
+      );
+    }
   }
 
   protected readonly formGroupExchange: FormGroup<FormGroupExchange> =
     new FormGroup<FormGroupExchange>({
-      formGive: new FormControl(null),
-      formGet: new FormControl(null),
+      formGive: new FormControl(0),
+      formGet: new FormControl(0),
     });
 
-  public ngOnDestroy(): void {
+  ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }
