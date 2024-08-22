@@ -1,36 +1,67 @@
 <div class="exchange__component">
   <span class="exchange__title">Обмен</span>
+    <img
+      (click)="replaceValueInFormControls()"
+      alt="buttonReplaceIcon"
+      src="assets/icons/currency/iconButtonReplace.svg"
+      class="replace-currency__button"
+    />
   <span class="input-give__label">Отдаёте</span>
   <div class="exchange__form-field-give">
     <img
       *ngIf="giveIconName"
       [src]="'assets/icons/currency/' + giveIconName + '.svg'"
       alt="{{ getIconName }}"
-      width=32
+      width="32"
       height="32"
     />
     <input
       class="exchange__input"
-      type="text"
+      type="number"
       [formControl]="formGroupExchange.controls.formGive"
       matInput
     />
   </div>
   <div style="margin-top: 20px">
-    <span style="margin-top: 190px; margin-left: 16px; margin-bottom: -10px" class="input-get__label">Получаете</span>
+    <span
+      style="margin-top: 190px; margin-left: 16px; margin-bottom: -10px"
+      class="input-get__label"
+      >Получаете</span
+    >
     <div class="exchange__form-field-get">
       <img
         *ngIf="getIconName"
         [src]="'assets/icons/currency/' + getIconName + '.svg'"
         alt="{{ getIconName }}"
-        width=32
+        width="32"
         height="32"
       />
-        <input
-          class="exchange__input"
-          type="text"
-          [formControl]="formGroupExchange.controls.formGet"
-        />
+      <input
+        class="exchange__input"
+        type="number"
+        [formControl]="formGroupExchange.controls.formGet"
+        readonly
+      />
     </div>
+  </div>
+  <div class="currency__output">
+    <span class="output__title">Курс обмена</span>
+    <span
+      class="currency__output-value"
+      *ngIf="
+        responseServer[giveCurrencyCode] && responseServer[getCurrencyCode]
+      "
+    >
+      1
+      {{ responseServer[giveCurrencyCode].code }}
+      =
+      {{
+        (
+          responseServer[getCurrencyCode].value /
+          responseServer[giveCurrencyCode].value
+        ).toFixed(2)
+      }}
+      {{ responseServer[getCurrencyCode].code }}
+    </span>
   </div>
 </div>

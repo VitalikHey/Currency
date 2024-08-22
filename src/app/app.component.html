@@ -1,5 +1,19 @@
 <div style="display: flex">
-  <app-currency-form (nameIcon)="handleValueNameIconGive($event)" (codeCurrency)="handleValueCodeCurrencyGive($event)" [valueTitle]="'Вы отправили'"></app-currency-form>
-  <app-currency-form (nameIcon)="handleValueNameIconGet($event)" (codeCurrency)="handleValueCodeCurrencyGet($event)" style="margin-left: -120px" [valueTitle]="'Вы получаете'"></app-currency-form>
-  <app-exchange [giveIconName]="nameIconGive" [giveCurrencyCode]="codeValueGive" [getIconName]="nameIconGet" [getCurrencyCode]="codeValueGet"></app-exchange>
+  <app-currency-form
+    (nameIcon)="handleValueNameIconGive($event)"
+    (codeCurrency)="handleValueCodeCurrencyGive($event)"
+    [valueTitle]="'Вы отправили'"
+  ></app-currency-form>
+  <app-currency-form
+    (nameIcon)="handleValueNameIconGet($event)"
+    (codeCurrency)="handleValueCodeCurrencyGet($event)"
+    style="margin-left: -120px"
+    [valueTitle]="'Вы получаете'"
+  ></app-currency-form>
+  <app-exchange
+    [giveIconName]="nameIconGive"
+    [giveCurrencyCode]="codeValueGive"
+    [getIconName]="nameIconGet"
+    [getCurrencyCode]="codeValueGet"
+  ></app-exchange>
 </div>

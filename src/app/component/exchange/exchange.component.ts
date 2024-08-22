@@ -24,14 +24,14 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public getCurrencyCode: string = '';
 
   private destroy$: Subject<void> = new Subject();
-  private responseServer: Record<string, { code: string; value: number }> = {
+
+  protected responseServer: Record<string, { code: string; value: number }> = {
     key: {
       code: '',
       value: 0,
     },
   };
 
-  protected sumGetCurrency: number = 0;
   constructor(private serviceCurrency: GetApiCurrencyService) {}
 
   public ngOnInit(): void {
@@ -41,17 +41,18 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
       .subscribe((value: ServiceResponse): void => {
         this.responseServer = value.data;
       });
-
-    this.formGroupExchange.controls.formGive.valueChanges.subscribe(() => {
-      this.changeValueFormGive();
-    });
+    this.formGroupExchange.controls.formGive.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((): void => {
+        this.changeValueFormGive();
+      });
   }
 
   public ngOnChanges(): void {
     this.changeValueFormGive();
   }
 
-  protected changeValueFormGive() {
+  protected changeValueFormGive(): void {
     this.formGroupExchange.controls.formGet.setValue(0);
     if (this.formGroupExchange.controls.formGive.value) {
       this.formGroupExchange.controls.formGet.setValue(
@@ -62,13 +63,24 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
+  protected replaceValueInFormControls(): void {
+    const valueGiveIcon: string = this.giveIconName;
+    const valueGiveCode: string = this.giveCurrencyCode;
+
+    this.giveIconName = this.getIconName;
+    this.giveCurrencyCode = this.getCurrencyCode;
+    this.getIconName = valueGiveIcon;
+    this.getCurrencyCode = valueGiveCode;
+    this.changeValueFormGive();
+  }
+
   protected readonly formGroupExchange: FormGroup<FormGroupExchange> =
     new FormGroup<FormGroupExchange>({
-      formGive: new FormControl(0),
-      formGet: new FormControl(0),
+      formGive: new FormControl(null),
+      formGet: new FormControl(null),
     });
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
