@@ -76,8 +76,8 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
 
   protected readonly formGroupExchange: FormGroup<FormGroupExchange> =
     new FormGroup<FormGroupExchange>({
-      formGive: new FormControl(null),
-      formGet: new FormControl(null),
+      formGive: new FormControl(0),
+      formGet: new FormControl(0),
     });
 
   public ngOnDestroy(): void {

@@ -1,25 +1,25 @@
-<div class="exchange__component">
+<div class="exchange__component" *ngIf="giveIconName && getIconName">
   <span class="exchange__title">Обмен</span>
     <img
-      (click)="replaceValueInFormControls()"
       alt="buttonReplaceIcon"
-      src="assets/icons/currency/iconButtonReplace.svg"
       class="replace-currency__button"
+      (click)="replaceValueInFormControls()"
+      [src]="'assets/icons/currency/iconButtonReplace.svg'"
     />
   <span class="input-give__label">Отдаёте</span>
   <div class="exchange__form-field-give">
     <img
-      *ngIf="giveIconName"
-      [src]="'assets/icons/currency/' + giveIconName + '.svg'"
-      alt="{{ getIconName }}"
       width="32"
       height="32"
+      alt="{{ getIconName }}"
+      *ngIf="giveIconName"
+      [src]="'assets/icons/currency/' + giveIconName + '.svg'"
     />
     <input
       class="exchange__input"
       type="number"
-      [formControl]="formGroupExchange.controls.formGive"
       matInput
+      [formControl]="formGroupExchange.controls.formGive"
     />
   </div>
   <div style="margin-top: 20px">
@@ -30,17 +30,17 @@
     >
     <div class="exchange__form-field-get">
       <img
-        *ngIf="getIconName"
-        [src]="'assets/icons/currency/' + getIconName + '.svg'"
         alt="{{ getIconName }}"
         width="32"
         height="32"
+        *ngIf="getIconName"
+        [ngSrc]="'assets/icons/currency/' + getIconName + '.svg'"
       />
       <input
         class="exchange__input"
         type="number"
-        [formControl]="formGroupExchange.controls.formGet"
         readonly
+        [formControl]="formGroupExchange.controls.formGet"
       />
     </div>
   </div>

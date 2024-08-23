@@ -45,8 +45,6 @@
   padding-block: 0 !important;
 }
 
-//Убрать дубликацию кода
-
 .mat-list-option {
   border-radius: 12px !important;
   width: 333px !important;
@@ -55,8 +53,9 @@
   margin-bottom: 8px !important;
   display: flex;
   align-items: center;
-  //Вот тут менять цвет фона при нажатии
-  //background-color: #E9FFD6 !important;
+}
+.mat-list-option:hover {
+  background-color: #E9FFD6;
 }
 
 .bank__icon {

@@ -1,6 +1,7 @@
 <div class="form-departure__component">
   <div class="main-title__form">{{ valueTitle }}</div>
   <app-button-currency
+    (click)="checkingIconOutput()"
     (outputValue)="addCryptoOrCurrency($event)"
   ></app-button-currency>
   <mat-button-toggle-group class="currency__button-group">
@@ -13,13 +14,14 @@
       >
     </ng-container>
     <mat-button-toggle
+      (click)="isShowIconCrypto = true"
       *ngIf="cryptoOrCurrency === 'crypto'"
       class="currency__button"
       >Криптовалюта</mat-button-toggle
     >
   </mat-button-toggle-group>
   <mat-selection-list
-    *ngIf="cryptoOrCurrency === 'currency'"
+    *ngIf="cryptoOrCurrency === 'currency' && isShowIconBank"
     class="scrollable-list"
   >
     <mat-list-item
@@ -30,10 +32,10 @@
       <div class="bank__icon">
         <div style="margin-top: 6px">
           <img
-            [ngSrc]="'assets/icons/currency/' + nameBank + '.svg'"
             alt="{{ nameBank }}"
             width="32"
             height="32"
+            [ngSrc]="'assets/icons/currency/' + nameBank + '.svg'"
           />
         </div>
         <span class="bank-name">{{ nameButtonRusBankListRussian[i] }}</span>
@@ -42,20 +44,20 @@
   </mat-selection-list>
   <mat-selection-list
     class="scrollable-list"
-    *ngIf="cryptoOrCurrency === 'crypto'"
+    *ngIf="cryptoOrCurrency === 'crypto' && isShowIconCrypto"
   >
     <mat-list-item
-      (click)="processingValueNameIconCrypto(nameCrypto.name, nameCrypto.code)"
       class="mat-list-option"
+      (click)="processingValueNameIconCrypto(nameCrypto.name, nameCrypto.code)"
       *ngFor="let nameCrypto of nameButtonCryptoList; let i = index"
     >
       <div class="bank__icon">
         <div style="margin-top: 6px">
           <img
-            [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
-            alt="{{ nameCrypto.name }}"
             width="32"
             height="32"
+            [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
+            alt="{{ nameCrypto.name }}"
           />
         </div>
         <span class="bank-name">{{ nameButtonCryptoList[i].name }}</span>

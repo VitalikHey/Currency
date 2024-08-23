@@ -25,6 +25,8 @@ export class CurrencyFormComponent {
 
   @Input() public valueTitle: string = '';
 
+  protected isShowIconBank: boolean = false;
+  protected isShowIconCrypto: boolean = false;
   protected readonly nameButtonCryptoList: Array<Currency> =
     nameButtonCryptoList;
   protected readonly nameButtonRusBankListRussian: Array<string> =
@@ -36,6 +38,7 @@ export class CurrencyFormComponent {
 
   protected processingValueCurrencyCode(value: string): void {
     this.codeCurrency.emit(value);
+    this.isShowIconBank = true;
   }
 
   protected processingValueNameIconBank(value: string): void {
@@ -49,5 +52,18 @@ export class CurrencyFormComponent {
 
   protected addCryptoOrCurrency(value: string): void {
     this.cryptoOrCurrency = value;
+  }
+
+  public checkingIconOutput(): void {
+    this.nameIcon.emit('');
+    this.codeCurrency.emit('');
+    switch (this.cryptoOrCurrency) {
+      case 'currency':
+        this.isShowIconCrypto = false;
+        break;
+      case 'crypto':
+        this.isShowIconBank = false;
+        break;
+    }
   }
 }
