@@ -35,17 +35,17 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private serviceCurrency: GetApiCurrencyService) {}
 
   public ngOnInit(): void {
-    this.serviceCurrency
-      .getApiCurrency()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((value: ServiceResponse): void => {
-        this.responseServer = value.data;
-      });
-    this.formGroupExchange.controls.formGive.valueChanges
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((): void => {
-        this.changeValueFormGive();
-      });
+    // this.serviceCurrency
+    //   .getApiCurrency()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((value: ServiceResponse): void => {
+    //     this.responseServer = value.data;
+    //   });
+    // this.formGroupExchange.controls.formGive.valueChanges
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((): void => {
+    //     this.changeValueFormGive();
+    //   });
   }
 
   public ngOnChanges(): void {

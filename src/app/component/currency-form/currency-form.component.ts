@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {
   Currency,
+  Money,
   nameButtonCryptoList,
   nameButtonCurrency,
   nameButtonRusBankList,
@@ -25,7 +26,7 @@ export class CurrencyFormComponent {
 
   @Input() public valueTitle: string = '';
 
-  protected isShowIconBank: boolean = false;
+  protected isShowIconBank: boolean = true;
   protected isShowIconCrypto: boolean = false;
   protected readonly nameButtonCryptoList: Array<Currency> =
     nameButtonCryptoList;
@@ -34,7 +35,7 @@ export class CurrencyFormComponent {
   protected readonly nameButtonRusBankList: Array<string> =
     nameButtonRusBankList;
   protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
-  protected cryptoOrCurrency: string = '';
+  protected cryptoOrCurrency: string = Money.currency;
 
   protected processingValueCurrencyCode(value: string): void {
     this.codeCurrency.emit(value);
@@ -58,12 +59,14 @@ export class CurrencyFormComponent {
     this.nameIcon.emit('');
     this.codeCurrency.emit('');
     switch (this.cryptoOrCurrency) {
-      case 'currency':
+      case Money.currency:
         this.isShowIconCrypto = false;
         break;
-      case 'crypto':
+      case Money.crypto:
         this.isShowIconBank = false;
         break;
     }
   }
+
+  protected readonly Money = Money;
 }

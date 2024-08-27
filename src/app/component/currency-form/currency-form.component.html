@@ -5,7 +5,7 @@
     (outputValue)="addCryptoOrCurrency($event)"
   ></app-button-currency>
   <mat-button-toggle-group class="currency__button-group">
-    <ng-container *ngIf="cryptoOrCurrency === 'currency'">
+    <ng-container *ngIf="cryptoOrCurrency === Money.currency">
       <mat-button-toggle
         (click)="processingValueCurrencyCode(currency.code)"
         *ngFor="let currency of nameButtonCurrency"
@@ -15,13 +15,13 @@
     </ng-container>
     <mat-button-toggle
       (click)="isShowIconCrypto = true"
-      *ngIf="cryptoOrCurrency === 'crypto'"
+      *ngIf="cryptoOrCurrency === Money.crypto"
       class="currency__button"
       >Криптовалюта</mat-button-toggle
     >
   </mat-button-toggle-group>
   <mat-selection-list
-    *ngIf="cryptoOrCurrency === 'currency' && isShowIconBank"
+    *ngIf="cryptoOrCurrency === Money.currency && isShowIconBank"
     class="scrollable-list"
   >
     <mat-list-item
@@ -44,7 +44,7 @@
   </mat-selection-list>
   <mat-selection-list
     class="scrollable-list"
-    *ngIf="cryptoOrCurrency === 'crypto' && isShowIconCrypto"
+    *ngIf="cryptoOrCurrency === Money.crypto && isShowIconCrypto"
   >
     <mat-list-item
       class="mat-list-option"
@@ -65,5 +65,3 @@
     </mat-list-item>
   </mat-selection-list>
 </div>
-
-<div>Честно говоря это немного не привычно для мненя, вот так уже по лучше, да это фает выгядит прям солидно можно работать и не смотер</div>

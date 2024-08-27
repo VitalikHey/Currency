@@ -1,5 +1,10 @@
 import { FormControl } from '@angular/forms';
 
+export enum Money {
+  crypto = 'crypto',
+  currency = 'currency',
+}
+
 enum CurrencyCodes {
   ADA = 'ADA',
   AUD = 'AUD',
