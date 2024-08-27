@@ -6,7 +6,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormGroupExchange, ServiceResponse } from '../data-type';
 import { GetApiCurrencyService } from '../services/get-api-currency.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -55,10 +55,12 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   protected changeValueFormGive(): void {
     this.formGroupExchange.controls.formGet.setValue(0);
     if (this.formGroupExchange.controls.formGive.value) {
-      this.formGroupExchange.controls.formGet.setValue(
+      const valueGet: number =
         this.formGroupExchange.controls.formGive.value *
-          (this.responseServer[this.getCurrencyCode].value /
-            this.responseServer[this.giveCurrencyCode].value),
+        (this.responseServer[this.getCurrencyCode].value /
+          this.responseServer[this.giveCurrencyCode].value);
+      this.formGroupExchange.controls.formGet.setValue(
+        Number(valueGet.toFixed(2)),
       );
     }
   }
@@ -77,7 +79,7 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   protected readonly formGroupExchange: FormGroup<FormGroupExchange> =
     new FormGroup<FormGroupExchange>({
       formGive: new FormControl(0),
-      formGet: new FormControl(0),
+      formGet: new FormControl(0, Validators.pattern('^[0-9]*.?[0-9]{0,2}$')),
     });
 
   public ngOnDestroy(): void {
