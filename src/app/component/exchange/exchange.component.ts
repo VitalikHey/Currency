@@ -7,8 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormGroupExchange, ServiceResponse } from '../data-type';
-import { GetApiCurrencyService } from '../services/get-api-currency.service';
+import { FormGroupExchange } from '../data-type';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -19,28 +18,15 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public giveIconName: string = '';
-  @Input() public giveCurrencyCode: string = '';
+  @Input() public giveCurrencyCode: string = 'RUB';
   @Input() public getIconName: string = '';
   @Input() public getCurrencyCode: string = '';
-
-  private destroy$: Subject<void> = new Subject();
-
-  protected responseServer: Record<string, { code: string; value: number }> = {
-    key: {
-      code: '',
-      value: 0,
-    },
-  };
-
-  constructor(private serviceCurrency: GetApiCurrencyService) {}
+  @Input() public responseServer: Record<
+    string,
+    { code: string; value: number }
+  > = {};
 
   public ngOnInit(): void {
-    this.serviceCurrency
-      .getApiCurrency()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((value: ServiceResponse): void => {
-        this.responseServer = value.data;
-      });
     this.formGroupExchange.controls.formGive.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((): void => {
@@ -48,8 +34,9 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
       });
   }
 
+  private destroy$: Subject<void> = new Subject();
+
   public ngOnChanges(): void {
-    console.log(this.getIconName);
     this.changeValueFormGive();
   }
 
@@ -60,7 +47,6 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
       this.giveIconName &&
       this.getIconName
     ) {
-      console.log(this.getCurrencyCode, this.responseServer);
       const valueGet: number =
         this.formGroupExchange.controls.formGive.value *
         (this.responseServer[this.getCurrencyCode].value /

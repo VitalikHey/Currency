@@ -1,6 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnDestroy,
+  OnInit,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -11,7 +13,10 @@ import {
   nameButtonRusBankList,
   nameButtonRusBankListRussian,
   nameCryptoArray,
+  ServiceResponse,
 } from './component/data-type';
+import { GetApiCurrencyService } from './component/services/get-api-currency.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +24,29 @@ import {
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('bankTemplate') bankTemplate: TemplateRef<string> | null;
   @ViewChild('cryptoTemplate') cryptoTemplate: TemplateRef<string> | null;
 
-  constructor() {
+  constructor(private serviceCurrency: GetApiCurrencyService) {
     this.bankTemplate = null;
     this.cryptoTemplate = null;
+  }
+
+  protected responseServer: Record<string, { code: string; value: number }> = {
+    key: {
+      code: '',
+      value: 0,
+    },
+  };
+
+  public ngOnInit(): void {
+    this.serviceCurrency
+      .getApiCurrency()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: ServiceResponse): void => {
+        this.responseServer = value.data;
+      });
   }
 
   protected codeValueGive: string = '';
@@ -41,6 +62,8 @@ export class AppComponent {
     nameButtonRusBankList;
   protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
 
+  private destroy$: Subject<void> = new Subject();
+
   protected handleValueCodeCurrencyGive(value: string): void {
     this.codeValueGive = value;
   }
@@ -55,5 +78,10 @@ export class AppComponent {
 
   protected handleValueNameIconGet(value: string): void {
     this.nameIconGet = value;
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
