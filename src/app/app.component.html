@@ -3,12 +3,16 @@
     (nameIcon)="handleValueNameIconGive($event)"
     (codeCurrency)="handleValueCodeCurrencyGive($event)"
     [valueTitle]="'Вы отправили'"
+    [firstTemplate]="bankTemplate"
+    [secondTemplate]="cryptoTemplate"
   ></app-currency-form>
   <app-currency-form
     style="margin-left: -120px"
     (nameIcon)="handleValueNameIconGet($event)"
     (codeCurrency)="handleValueCodeCurrencyGet($event)"
     [valueTitle]="'Вы получаете'"
+    [firstTemplate]="bankTemplate"
+    [secondTemplate]="cryptoTemplate"
   ></app-currency-form>
   <app-exchange
     [giveIconName]="nameIconGive"
@@ -17,3 +21,29 @@
     [getCurrencyCode]="codeValueGet"
   ></app-exchange>
 </div>
+<ng-template #bankTemplate let-nameBank let-index="index">
+  <div class="bank__icon">
+    <div style="margin-top: 6px">
+      <img
+        alt="{{ nameBank }}"
+        width="32"
+        height="32"
+        [ngSrc]="'assets/icons/currency/' + nameBank + '.svg'"
+      />
+    </div>
+    <span class="bank-name">{{ nameButtonRusBankListRussian[index] }}</span>
+  </div>
+</ng-template>
+<ng-template #cryptoTemplate let-nameCrypto let-index="index">
+  <div class="bank__icon">
+    <div style="margin-top: 6px">
+      <img
+        width="32"
+        height="32"
+        [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
+        alt="{{ nameCrypto.name }}"
+      />
+    </div>
+    <span class="bank-name">{{ nameButtonCryptoList[index].name }}</span>
+  </div>
+</ng-template>

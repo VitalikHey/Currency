@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import {
+  Currency,
+  nameButtonCryptoList,
+  nameButtonRusBankListRussian,
+} from './component/data-type';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +17,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  @ViewChild('bankTemplate') bankTemplate: TemplateRef<string> | null;
+  @ViewChild('cryptoTemplate') cryptoTemplate: TemplateRef<string> | null;
+
+  constructor() {
+    this.bankTemplate = null;
+    this.cryptoTemplate = null;
+  }
+
   protected codeValueGive: string = '';
   protected nameIconGive: string = '';
   protected codeValueGet: string = '';
@@ -27,4 +45,9 @@ export class AppComponent {
   protected handleValueNameIconGet(value: string): void {
     this.nameIconGet = value;
   }
+
+  protected readonly nameButtonRusBankListRussian: Array<string> =
+    nameButtonRusBankListRussian;
+  protected readonly nameButtonCryptoList: Array<Currency> =
+    nameButtonCryptoList;
 }

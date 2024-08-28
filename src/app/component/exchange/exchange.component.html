@@ -1,17 +1,17 @@
 <div class="exchange__component">
   <span class="exchange__title">Обмен</span>
-    <img
-      alt="buttonReplaceIcon"
-      class="replace-currency__button"
-      (click)="replaceValueInFormControls()"
-      [src]="'assets/icons/currency/iconButtonReplace.svg'"
-    />
+  <img
+    alt="buttonReplaceIcon"
+    class="replace-currency__button"
+    (click)="replaceValueInFormControls()"
+    [src]="'assets/icons/currency/iconButtonReplace.svg'"
+  />
   <span class="input-give__label">Отдаёте</span>
   <div class="exchange__form-field-give">
     <img
       width="32"
       height="32"
-      alt="{{ getIconName }}"
+      alt="{{ giveIconName }}"
       *ngIf="giveIconName"
       [src]="'assets/icons/currency/' + giveIconName + '.svg'"
     />
@@ -34,7 +34,7 @@
         width="32"
         height="32"
         *ngIf="getIconName"
-        [ngSrc]="'assets/icons/currency/' + getIconName + '.svg'"
+        [src]="'assets/icons/currency/' + getIconName + '.svg'"
       />
       <input
         class="exchange__input"

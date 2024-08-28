@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  TemplateRef,
 } from '@angular/core';
 import {
   Currency,
@@ -11,7 +12,6 @@ import {
   nameButtonCryptoList,
   nameButtonCurrency,
   nameButtonRusBankList,
-  nameButtonRusBankListRussian,
 } from '../data-type';
 
 @Component({
@@ -25,13 +25,18 @@ export class CurrencyFormComponent {
   @Output() public nameIcon: EventEmitter<string> = new EventEmitter();
 
   @Input() public valueTitle: string = '';
+  @Input() public firstTemplate: TemplateRef<string> | null;
+  @Input() public secondTemplate: TemplateRef<string> | null;
+
+  constructor() {
+    this.firstTemplate = null;
+    this.secondTemplate = null;
+  }
 
   protected isShowIconBank: boolean = true;
   protected isShowIconCrypto: boolean = false;
   protected readonly nameButtonCryptoList: Array<Currency> =
     nameButtonCryptoList;
-  protected readonly nameButtonRusBankListRussian: Array<string> =
-    nameButtonRusBankListRussian;
   protected readonly nameButtonRusBankList: Array<string> =
     nameButtonRusBankList;
   protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
@@ -42,7 +47,7 @@ export class CurrencyFormComponent {
     this.isShowIconBank = true;
   }
 
-  protected processingValueNameIconBank(value: string): void {
+  public processingValueNameIconBank(value: string): void {
     this.nameIcon.emit(value);
   }
 

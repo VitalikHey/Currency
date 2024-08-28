@@ -5,6 +5,11 @@ export enum Money {
   currency = 'currency',
 }
 
+export enum SequenceNumber {
+  first = 'first',
+  second = 'second',
+}
+
 enum CurrencyCodes {
   ADA = 'ADA',
   AUD = 'AUD',

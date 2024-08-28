@@ -1,67 +1,64 @@
 <div class="form-departure__component">
   <div class="main-title__form">{{ valueTitle }}</div>
+
   <app-button-currency
     (click)="checkingIconOutput()"
     (outputValue)="addCryptoOrCurrency($event)"
   ></app-button-currency>
+
   <mat-button-toggle-group class="currency__button-group">
     <ng-container *ngIf="cryptoOrCurrency === Money.currency">
       <mat-button-toggle
-        (click)="processingValueCurrencyCode(currency.code)"
         *ngFor="let currency of nameButtonCurrency"
+        (click)="processingValueCurrencyCode(currency.code)"
         class="currency__button"
-        >{{ currency.name }}</mat-button-toggle
       >
+        {{ currency.name }}
+      </mat-button-toggle>
     </ng-container>
+
     <mat-button-toggle
-      (click)="isShowIconCrypto = true"
       *ngIf="cryptoOrCurrency === Money.crypto"
+      (click)="isShowIconCrypto = true"
       class="currency__button"
-      >Криптовалюта</mat-button-toggle
     >
+      Криптовалюта
+    </mat-button-toggle>
   </mat-button-toggle-group>
+
   <mat-selection-list
     *ngIf="cryptoOrCurrency === Money.currency && isShowIconBank"
     class="scrollable-list"
   >
     <mat-list-item
+      *ngFor="let name of nameButtonRusBankList; let i = index"
+      (click)="processingValueNameIconBank(name)"
       class="mat-list-option"
-      (click)="processingValueNameIconBank(nameBank)"
-      *ngFor="let nameBank of nameButtonRusBankList; let i = index"
     >
-      <div class="bank__icon">
-        <div style="margin-top: 6px">
-          <img
-            alt="{{ nameBank }}"
-            width="32"
-            height="32"
-            [ngSrc]="'assets/icons/currency/' + nameBank + '.svg'"
-          />
-        </div>
-        <span class="bank-name">{{ nameButtonRusBankListRussian[i] }}</span>
-      </div>
+      <ng-container
+        *ngTemplateOutlet="
+          firstTemplate;
+          context: { $implicit: name, index: i }
+        "
+      ></ng-container>
     </mat-list-item>
   </mat-selection-list>
+
   <mat-selection-list
-    class="scrollable-list"
     *ngIf="cryptoOrCurrency === Money.crypto && isShowIconCrypto"
+    class="scrollable-list"
   >
     <mat-list-item
+      *ngFor="let nameCrypto of nameButtonCryptoList; let i = index"
       class="mat-list-option"
       (click)="processingValueNameIconCrypto(nameCrypto.name, nameCrypto.code)"
-      *ngFor="let nameCrypto of nameButtonCryptoList; let i = index"
     >
-      <div class="bank__icon">
-        <div style="margin-top: 6px">
-          <img
-            width="32"
-            height="32"
-            [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
-            alt="{{ nameCrypto.name }}"
-          />
-        </div>
-        <span class="bank-name">{{ nameButtonCryptoList[i].name }}</span>
-      </div>
+      <ng-container
+        *ngTemplateOutlet="
+          secondTemplate;
+          context: { $implicit: nameCrypto, index: i }
+        "
+      ></ng-container>
     </mat-list-item>
   </mat-selection-list>
 </div>

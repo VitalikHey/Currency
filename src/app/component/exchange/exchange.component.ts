@@ -35,26 +35,32 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private serviceCurrency: GetApiCurrencyService) {}
 
   public ngOnInit(): void {
-    // this.serviceCurrency
-    //   .getApiCurrency()
-    //   .pipe(takeUntil(this.destroy$))
-    //   .subscribe((value: ServiceResponse): void => {
-    //     this.responseServer = value.data;
-    //   });
-    // this.formGroupExchange.controls.formGive.valueChanges
-    //   .pipe(takeUntil(this.destroy$))
-    //   .subscribe((): void => {
-    //     this.changeValueFormGive();
-    //   });
+    this.serviceCurrency
+      .getApiCurrency()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: ServiceResponse): void => {
+        this.responseServer = value.data;
+      });
+    this.formGroupExchange.controls.formGive.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((): void => {
+        this.changeValueFormGive();
+      });
   }
 
   public ngOnChanges(): void {
+    console.log(this.getIconName);
     this.changeValueFormGive();
   }
 
   protected changeValueFormGive(): void {
     this.formGroupExchange.controls.formGet.setValue(0);
-    if (this.formGroupExchange.controls.formGive.value) {
+    if (
+      this.formGroupExchange.controls.formGive.value &&
+      this.giveIconName &&
+      this.getIconName
+    ) {
+      console.log(this.getCurrencyCode, this.responseServer);
       const valueGet: number =
         this.formGroupExchange.controls.formGive.value *
         (this.responseServer[this.getCurrencyCode].value /
