@@ -7,7 +7,7 @@
   ></app-button-currency>
 
   <mat-button-toggle-group class="currency__button-group">
-    <ng-container *ngIf="cryptoOrCurrency === Money.currency">
+    <ng-container *ngIf="firstOrSecond === SequenceNumber.first">
       <mat-button-toggle
         *ngFor="let currency of nameButtonCurrency"
         (click)="processingValueCurrencyCode(currency.code)"
@@ -18,8 +18,8 @@
     </ng-container>
 
     <mat-button-toggle
-      *ngIf="cryptoOrCurrency === Money.crypto"
-      (click)="isShowIconCrypto = true"
+      *ngIf="firstOrSecond === SequenceNumber.second"
+      (click)="isShowIconSecondTemplate = true"
       class="currency__button"
     >
       Криптовалюта
@@ -27,36 +27,36 @@
   </mat-button-toggle-group>
 
   <mat-selection-list
-    *ngIf="cryptoOrCurrency === Money.currency && isShowIconBank"
+    *ngIf="firstOrSecond === SequenceNumber.first && isShowIconFirstTemplate"
     class="scrollable-list"
   >
     <mat-list-item
-      *ngFor="let name of nameButtonRusBankList; let i = index"
-      (click)="processingValueNameIconBank(name)"
+      *ngFor="let nameStringFirstTemplate of arrayNamesForFirstTemplate; let i = index"
+      (click)="processingValueNameIconBank(nameStringFirstTemplate)"
       class="mat-list-option"
     >
       <ng-container
         *ngTemplateOutlet="
           firstTemplate;
-          context: { $implicit: name, index: i }
+          context: { $implicit: nameStringFirstTemplate, index: i }
         "
       ></ng-container>
     </mat-list-item>
   </mat-selection-list>
 
   <mat-selection-list
-    *ngIf="cryptoOrCurrency === Money.crypto && isShowIconCrypto"
+    *ngIf="firstOrSecond === SequenceNumber.second && isShowIconSecondTemplate"
     class="scrollable-list"
   >
     <mat-list-item
-      *ngFor="let nameCrypto of nameButtonCryptoList; let i = index"
+      *ngFor="let nameStringSecondTemplate of arrayNamesForSecondTemplate; let i = index"
       class="mat-list-option"
-      (click)="processingValueNameIconCrypto(nameCrypto.name, nameCrypto.code)"
+      (click)="processingValueNameIconCrypto(nameStringSecondTemplate.name, nameStringSecondTemplate.code)"
     >
       <ng-container
         *ngTemplateOutlet="
           secondTemplate;
-          context: { $implicit: nameCrypto, index: i }
+          context: { $implicit: nameStringSecondTemplate, index: i }
         "
       ></ng-container>
     </mat-list-item>

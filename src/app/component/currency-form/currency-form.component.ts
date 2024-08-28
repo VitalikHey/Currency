@@ -9,9 +9,8 @@ import {
 import {
   Currency,
   Money,
-  nameButtonCryptoList,
   nameButtonCurrency,
-  nameButtonRusBankList,
+  SequenceNumber,
 } from '../data-type';
 
 @Component({
@@ -27,24 +26,24 @@ export class CurrencyFormComponent {
   @Input() public valueTitle: string = '';
   @Input() public firstTemplate: TemplateRef<string> | null;
   @Input() public secondTemplate: TemplateRef<string> | null;
+  @Input() public arrayNamesForFirstTemplate: Array<string> = [];
+  @Input() public arrayNamesForSecondTemplate: Array<Currency> = [];
 
   constructor() {
     this.firstTemplate = null;
     this.secondTemplate = null;
   }
 
-  protected isShowIconBank: boolean = true;
-  protected isShowIconCrypto: boolean = false;
-  protected readonly nameButtonCryptoList: Array<Currency> =
-    nameButtonCryptoList;
-  protected readonly nameButtonRusBankList: Array<string> =
-    nameButtonRusBankList;
+  protected isShowIconFirstTemplate: boolean = true;
+  protected isShowIconSecondTemplate: boolean = false;
+  protected readonly SequenceNumber = SequenceNumber;
+
   protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
-  protected cryptoOrCurrency: string = Money.currency;
+  protected firstOrSecond: string = SequenceNumber.first;
 
   protected processingValueCurrencyCode(value: string): void {
     this.codeCurrency.emit(value);
-    this.isShowIconBank = true;
+    this.isShowIconFirstTemplate = true;
   }
 
   public processingValueNameIconBank(value: string): void {
@@ -57,21 +56,19 @@ export class CurrencyFormComponent {
   }
 
   protected addCryptoOrCurrency(value: string): void {
-    this.cryptoOrCurrency = value;
+    this.firstOrSecond = value;
   }
 
   public checkingIconOutput(): void {
     this.nameIcon.emit('');
     this.codeCurrency.emit('');
-    switch (this.cryptoOrCurrency) {
+    switch (this.firstOrSecond) {
       case Money.currency:
-        this.isShowIconCrypto = false;
+        this.isShowIconSecondTemplate = false;
         break;
       case Money.crypto:
-        this.isShowIconBank = false;
+        this.isShowIconFirstTemplate = false;
         break;
     }
   }
-
-  protected readonly Money = Money;
 }

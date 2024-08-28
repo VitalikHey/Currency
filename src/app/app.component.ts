@@ -7,6 +7,7 @@ import {
 import {
   Currency,
   nameButtonCryptoList,
+  nameButtonRusBankList,
   nameButtonRusBankListRussian,
 } from './component/data-type';
 
@@ -50,4 +51,5 @@ export class AppComponent {
     nameButtonRusBankListRussian;
   protected readonly nameButtonCryptoList: Array<Currency> =
     nameButtonCryptoList;
+  protected readonly nameButtonRusBankList = nameButtonRusBankList;
 }

@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { Money } from '../data-type';
+import { SequenceNumber } from '../data-type';
 
 @Component({
   selector: 'app-button-currency',
@@ -18,9 +18,9 @@ export class ButtonCurrencyComponent {
 
   protected handleClickButtonCurrency(currency: boolean): void {
     if (currency) {
-      this.valueCurrency = Money.currency;
+      this.valueCurrency = SequenceNumber.first;
     } else {
-      this.valueCurrency = Money.crypto;
+      this.valueCurrency = SequenceNumber.second;
     }
     this.outputValue.emit(this.valueCurrency);
   }
