@@ -49,10 +49,10 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
-  protected codeValueGive: string = '';
-  protected nameIconGive: string = '';
-  protected codeValueGet: string = '';
-  protected nameIconGet: string = '';
+  protected codeValueGive: string = 'RUB';
+  protected nameIconGive: string = 'alphaBank';
+  protected codeValueGet: string = 'USD';
+  protected nameIconGet: string = 'discoveryBank';
   protected arrayNameCrypto: Array<string> = nameCryptoArray;
   protected readonly nameButtonRusBankListRussian: Array<string> =
     nameButtonRusBankListRussian;

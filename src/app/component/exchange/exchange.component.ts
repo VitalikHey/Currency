@@ -18,7 +18,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public giveIconName: string = '';
-  @Input() public giveCurrencyCode: string = 'RUB';
+  @Input() public giveCurrencyCode: string = '';
   @Input() public getIconName: string = '';
   @Input() public getCurrencyCode: string = '';
   @Input() public responseServer: Record<
@@ -27,6 +27,7 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   > = {};
 
   public ngOnInit(): void {
+    console.log(this.getIconName, this.giveIconName);
     this.formGroupExchange.controls.formGive.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((): void => {
