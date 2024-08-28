@@ -6,12 +6,7 @@ import {
   Output,
   TemplateRef,
 } from '@angular/core';
-import {
-  Currency,
-  Money,
-  nameButtonCurrency,
-  SequenceNumber,
-} from '../data-type';
+import { Currency, Money, SequenceNumber } from '../data-type';
 
 @Component({
   selector: 'app-currency-form',
@@ -28,6 +23,10 @@ export class CurrencyFormComponent {
   @Input() public secondTemplate: TemplateRef<string> | null;
   @Input() public arrayNamesForFirstTemplate: Array<string> = [];
   @Input() public arrayNamesForSecondTemplate: Array<Currency> = [];
+  @Input() public nameFirstTemplate: string = '';
+  @Input() public nameSecondTemplate: string = '';
+  @Input() public nameFilterOption: Array<Currency> = [];
+  @Input() public nameSecondOption: Array<string> = [];
 
   constructor() {
     this.firstTemplate = null;
@@ -37,17 +36,11 @@ export class CurrencyFormComponent {
   protected isShowIconFirstTemplate: boolean = true;
   protected isShowIconSecondTemplate: boolean = false;
   protected readonly SequenceNumber = SequenceNumber;
-
-  protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
   protected firstOrSecond: string = SequenceNumber.first;
 
   protected processingValueCurrencyCode(value: string): void {
     this.codeCurrency.emit(value);
     this.isShowIconFirstTemplate = true;
-  }
-
-  public processingValueNameIconBank(value: string): void {
-    this.nameIcon.emit(value);
   }
 
   protected processingValueNameIconCrypto(name: string, code: string): void {
@@ -57,6 +50,10 @@ export class CurrencyFormComponent {
 
   protected addCryptoOrCurrency(value: string): void {
     this.firstOrSecond = value;
+  }
+
+  public processingValueNameIconBank(value: string): void {
+    this.nameIcon.emit(value);
   }
 
   public checkingIconOutput(): void {

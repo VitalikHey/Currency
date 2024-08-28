@@ -4,26 +4,32 @@
   <app-button-currency
     (click)="checkingIconOutput()"
     (outputValue)="addCryptoOrCurrency($event)"
+    [nameFirstTemplate]="nameFirstTemplate"
+    [nameSecondTemplate]="nameSecondTemplate"
   ></app-button-currency>
 
   <mat-button-toggle-group class="currency__button-group">
     <ng-container *ngIf="firstOrSecond === SequenceNumber.first">
       <mat-button-toggle
-        *ngFor="let currency of nameButtonCurrency"
-        (click)="processingValueCurrencyCode(currency.code)"
+        *ngFor="let nameFilterOption of nameFilterOption"
+        (click)="processingValueCurrencyCode(nameFilterOption.code)"
         class="currency__button"
       >
-        {{ currency.name }}
+        {{ nameFilterOption.name }}
       </mat-button-toggle>
     </ng-container>
 
-    <mat-button-toggle
+    <ng-container
       *ngIf="firstOrSecond === SequenceNumber.second"
-      (click)="isShowIconSecondTemplate = true"
-      class="currency__button"
     >
-      Криптовалюта
-    </mat-button-toggle>
+      <mat-button-toggle
+        (click)="isShowIconSecondTemplate = true"
+        class="currency__button"
+        *ngFor="let nameFilter of nameSecondOption"
+      >
+        {{nameFilter}}
+      </mat-button-toggle>
+    </ng-container>
   </mat-button-toggle-group>
 
   <mat-selection-list

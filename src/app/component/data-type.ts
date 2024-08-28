@@ -56,6 +56,8 @@ export interface FormGroupExchange {
   formGet: FormControl<number | null>;
 }
 
+export const nameCryptoArray: Array<string> = ['Криптовалюта'];
+
 export const nameButtonCurrency: Array<Currency> = [
   { name: 'Рубли', code: 'RUB' },
   { name: 'Доллары', code: 'USD' },

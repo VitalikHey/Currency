@@ -7,8 +7,10 @@ import {
 import {
   Currency,
   nameButtonCryptoList,
+  nameButtonCurrency,
   nameButtonRusBankList,
   nameButtonRusBankListRussian,
+  nameCryptoArray,
 } from './component/data-type';
 
 @Component({
@@ -30,6 +32,14 @@ export class AppComponent {
   protected nameIconGive: string = '';
   protected codeValueGet: string = '';
   protected nameIconGet: string = '';
+  protected arrayNameCrypto: Array<string> = nameCryptoArray;
+  protected readonly nameButtonRusBankListRussian: Array<string> =
+    nameButtonRusBankListRussian;
+  protected readonly nameButtonCryptoList: Array<Currency> =
+    nameButtonCryptoList;
+  protected readonly nameButtonRusBankList: Array<string> =
+    nameButtonRusBankList;
+  protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
 
   protected handleValueCodeCurrencyGive(value: string): void {
     this.codeValueGive = value;
@@ -46,10 +56,4 @@ export class AppComponent {
   protected handleValueNameIconGet(value: string): void {
     this.nameIconGet = value;
   }
-
-  protected readonly nameButtonRusBankListRussian: Array<string> =
-    nameButtonRusBankListRussian;
-  protected readonly nameButtonCryptoList: Array<Currency> =
-    nameButtonCryptoList;
-  protected readonly nameButtonRusBankList = nameButtonRusBankList;
 }

@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core';
 import { SequenceNumber } from '../data-type';
@@ -14,6 +15,8 @@ import { SequenceNumber } from '../data-type';
 })
 export class ButtonCurrencyComponent {
   @Output() public outputValue: EventEmitter<string> = new EventEmitter();
+  @Input() public nameFirstTemplate: string = '';
+  @Input() public nameSecondTemplate: string = '';
   public valueCurrency: string = '';
 
   protected handleClickButtonCurrency(currency: boolean): void {
