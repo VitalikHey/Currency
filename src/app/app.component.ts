@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   OnDestroy,
   OnInit,
   TemplateRef,
@@ -14,7 +13,6 @@ import {
   nameButtonRusBankList,
   nameButtonRusBankListRussian,
   nameCryptoArray,
-  SequenceNumber,
   ServiceResponse,
 } from './component/data-type';
 import { GetApiCurrencyService } from './component/services/get-api-currency.service';
@@ -53,14 +51,6 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
-  public processingValueNameIconBank(
-    value: string,
-    output: EventEmitter<string>,
-  ): void {
-    output.emit(value);
-    console.log(value);
-  }
-
   protected codeValueGive: string = 'RUB';
   protected nameIconGive: string = 'alphaBank';
   protected codeValueGet: string = 'USD';
@@ -96,7 +86,4 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
-  protected readonly SequenceNumber = SequenceNumber;
-  protected readonly console = console;
 }

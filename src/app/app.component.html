@@ -35,13 +35,17 @@
   ></app-exchange>
 </div>
 
-<app-ui-string
-  [templateString]="bankTemplate"
-  [arrayNamesForStringTemplate]="nameButtonRusBankList"
-  [parentFunction]="processingValueNameIconBank"
-  (nameIcon)="handleValueNameIconGive($event)"
+
+<app-button-toggle-business
+  (selectedButtonCurrency)="handleValueCodeCurrencyGive($event)"
 >
-</app-ui-string>
+</app-button-toggle-business>
+
+<app-list-item-buisness
+  (nameSelectedBank)="handleValueNameIconGive($event)"
+>
+</app-list-item-buisness>
+
 
 <ng-template #bankTemplate let-eventEmitter='eventEmitter' let-outputFunction>
   <mat-selection-list class="scrollable-list">
