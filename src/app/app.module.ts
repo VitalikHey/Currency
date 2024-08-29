@@ -14,6 +14,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ExchangeComponent } from './component/exchange/exchange.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UiStringComponent } from './component/ui-string/ui-string.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CurrencyFormComponent,
     ButtonCurrencyComponent,
     ExchangeComponent,
+    UiStringComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnDestroy,
   OnInit,
   TemplateRef,
@@ -13,6 +14,7 @@ import {
   nameButtonRusBankList,
   nameButtonRusBankListRussian,
   nameCryptoArray,
+  SequenceNumber,
   ServiceResponse,
 } from './component/data-type';
 import { GetApiCurrencyService } from './component/services/get-api-currency.service';
@@ -27,10 +29,12 @@ import { Subject, takeUntil } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('bankTemplate') bankTemplate: TemplateRef<string> | null;
   @ViewChild('cryptoTemplate') cryptoTemplate: TemplateRef<string> | null;
+  @ViewChild('fullTemplate') fullTemplate: TemplateRef<string> | null;
 
   constructor(private serviceCurrency: GetApiCurrencyService) {
     this.bankTemplate = null;
     this.cryptoTemplate = null;
+    this.fullTemplate = null;
   }
 
   protected responseServer: Record<string, { code: string; value: number }> = {
@@ -47,6 +51,14 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((value: ServiceResponse): void => {
         this.responseServer = value.data;
       });
+  }
+
+  public processingValueNameIconBank(
+    value: string,
+    output: EventEmitter<string>,
+  ): void {
+    output.emit(value);
+    console.log(value);
   }
 
   protected codeValueGive: string = 'RUB';
@@ -84,4 +96,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
+
+  protected readonly SequenceNumber = SequenceNumber;
+  protected readonly console = console;
 }

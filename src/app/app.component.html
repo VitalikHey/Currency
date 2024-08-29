@@ -34,19 +34,37 @@
     [responseServer]="responseServer"
   ></app-exchange>
 </div>
-<ng-template #bankTemplate let-nameBank let-index="index">
-  <div class="bank__icon">
-    <div style="margin-top: 6px">
-      <img
-        alt="{{ nameBank }}"
-        width="32"
-        height="32"
-        [ngSrc]="'assets/icons/currency/' + nameBank + '.svg'"
-      />
-    </div>
-    <span class="bank-name">{{ nameButtonRusBankListRussian[index] }}</span>
-  </div>
+
+<app-ui-string
+  [templateString]="bankTemplate"
+  [arrayNamesForStringTemplate]="nameButtonRusBankList"
+  [parentFunction]="processingValueNameIconBank"
+  (nameIcon)="handleValueNameIconGive($event)"
+>
+</app-ui-string>
+
+<ng-template #bankTemplate let-eventEmitter='eventEmitter' let-outputFunction>
+  <mat-selection-list class="scrollable-list">
+    <mat-list-item
+      *ngFor="let nameStringBank of nameButtonRusBankList; let i = index"
+      class="mat-list-option"
+      (click)="outputFunction(nameStringBank, eventEmitter)"
+    >
+      <div class="bank__icon">
+        <div style="margin-top: 6px">
+          <img
+            alt="{{ nameStringBank }}"
+            width="32"
+            height="32"
+            [ngSrc]="'assets/icons/currency/' + nameStringBank + '.svg'"
+          />
+        </div>
+        <span class="bank-name">{{ nameButtonRusBankListRussian[i] }}</span>
+      </div>
+    </mat-list-item>
+  </mat-selection-list>
 </ng-template>
+
 <ng-template #cryptoTemplate let-nameCrypto let-index="index">
   <div class="bank__icon">
     <div style="margin-top: 6px">
@@ -60,3 +78,4 @@
     <span class="bank-name">{{ nameButtonCryptoList[index].name }}</span>
   </div>
 </ng-template>
+

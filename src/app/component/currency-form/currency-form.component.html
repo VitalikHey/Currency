@@ -19,15 +19,13 @@
       </mat-button-toggle>
     </ng-container>
 
-    <ng-container
-      *ngIf="firstOrSecond === SequenceNumber.second"
-    >
+    <ng-container *ngIf="firstOrSecond === SequenceNumber.second">
       <mat-button-toggle
         *ngFor="let nameFilter of nameSecondOption"
         class="currency__button"
         (click)="isShowIconSecondTemplate = true"
       >
-        {{nameFilter}}
+        {{ nameFilter }}
       </mat-button-toggle>
     </ng-container>
   </mat-button-toggle-group>
@@ -37,7 +35,10 @@
     class="scrollable-list"
   >
     <mat-list-item
-      *ngFor="let nameStringFirstTemplate of arrayNamesForFirstTemplate; let i = index"
+      *ngFor="
+        let nameStringFirstTemplate of arrayNamesForFirstTemplate;
+        let i = index
+      "
       class="mat-list-option"
       (click)="processingValueNameIconBank(nameStringFirstTemplate)"
     >
@@ -55,9 +56,17 @@
     class="scrollable-list"
   >
     <mat-list-item
-      *ngFor="let nameStringSecondTemplate of arrayNamesForSecondTemplate; let i = index"
+      *ngFor="
+        let nameStringSecondTemplate of arrayNamesForSecondTemplate;
+        let i = index
+      "
       class="mat-list-option"
-      (click)="processingValueNameIconCrypto(nameStringSecondTemplate.name, nameStringSecondTemplate.code)"
+      (click)="
+        processingValueNameIconCrypto(
+          nameStringSecondTemplate.name,
+          nameStringSecondTemplate.code
+        )
+      "
     >
       <ng-container
         *ngTemplateOutlet="
