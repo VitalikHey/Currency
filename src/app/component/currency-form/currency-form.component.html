@@ -2,18 +2,18 @@
   <div class="main-title__form">{{ valueTitle }}</div>
 
   <app-button-currency
-    (click)="checkingIconOutput()"
-    (outputValue)="addCryptoOrCurrency($event)"
     [nameFirstTemplate]="nameFirstTemplate"
     [nameSecondTemplate]="nameSecondTemplate"
+    (click)="checkingIconOutput()"
+    (outputValue)="addCryptoOrCurrency($event)"
   ></app-button-currency>
 
   <mat-button-toggle-group class="currency__button-group">
     <ng-container *ngIf="firstOrSecond === SequenceNumber.first">
       <mat-button-toggle
         *ngFor="let nameFilterOption of nameFilterOption"
-        (click)="processingValueCurrencyCode(nameFilterOption.code)"
         class="currency__button"
+        (click)="processingValueCurrencyCode(nameFilterOption.code)"
       >
         {{ nameFilterOption.name }}
       </mat-button-toggle>
@@ -23,9 +23,9 @@
       *ngIf="firstOrSecond === SequenceNumber.second"
     >
       <mat-button-toggle
-        (click)="isShowIconSecondTemplate = true"
-        class="currency__button"
         *ngFor="let nameFilter of nameSecondOption"
+        class="currency__button"
+        (click)="isShowIconSecondTemplate = true"
       >
         {{nameFilter}}
       </mat-button-toggle>
@@ -38,8 +38,8 @@
   >
     <mat-list-item
       *ngFor="let nameStringFirstTemplate of arrayNamesForFirstTemplate; let i = index"
-      (click)="processingValueNameIconBank(nameStringFirstTemplate)"
       class="mat-list-option"
+      (click)="processingValueNameIconBank(nameStringFirstTemplate)"
     >
       <ng-container
         *ngTemplateOutlet="

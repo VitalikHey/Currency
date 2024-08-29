@@ -1,7 +1,5 @@
 <div style="display: flex">
   <app-currency-form
-    (nameIcon)="handleValueNameIconGive($event)"
-    (codeCurrency)="handleValueCodeCurrencyGive($event)"
     [valueTitle]="'Вы отправили'"
     [firstTemplate]="bankTemplate"
     [secondTemplate]="cryptoTemplate"
@@ -11,11 +9,11 @@
     [nameSecondTemplate]="'Криптовалюта'"
     [nameFilterOption]="nameButtonCurrency"
     [nameSecondOption]="arrayNameCrypto"
+    (nameIcon)="handleValueNameIconGive($event)"
+    (codeCurrency)="handleValueCodeCurrencyGive($event)"
   ></app-currency-form>
   <app-currency-form
     style="margin-left: -120px"
-    (nameIcon)="handleValueNameIconGet($event)"
-    (codeCurrency)="handleValueCodeCurrencyGet($event)"
     [valueTitle]="'Вы получаете'"
     [firstTemplate]="bankTemplate"
     [secondTemplate]="cryptoTemplate"
@@ -25,6 +23,8 @@
     [nameSecondTemplate]="'Криптовалюта'"
     [nameFilterOption]="nameButtonCurrency"
     [nameSecondOption]="arrayNameCrypto"
+    (nameIcon)="handleValueNameIconGet($event)"
+    (codeCurrency)="handleValueCodeCurrencyGet($event)"
   ></app-currency-form>
   <app-exchange
     [giveIconName]="nameIconGive"
@@ -53,8 +53,8 @@
       <img
         width="32"
         height="32"
-        [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
         alt="{{ nameCrypto.name }}"
+        [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
       />
     </div>
     <span class="bank-name">{{ nameButtonCryptoList[index].name }}</span>
