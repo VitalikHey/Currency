@@ -53,7 +53,7 @@ export class AppComponent implements OnInit, OnDestroy {
   protected nameIconGive: string = 'alphaBank';
   protected codeValueGet: string = 'USD';
   protected nameIconGet: string = 'discoveryBank';
-  protected arrayNameCrypto: Array<string> = nameCryptoArray;
+  protected readonly arrayNameCrypto: Array<string> = nameCryptoArray;
   protected readonly nameButtonRusBankListRussian: Array<string> =
     nameButtonRusBankListRussian;
   protected readonly nameButtonCryptoList: Array<Currency> =
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
     nameButtonRusBankList;
   protected readonly nameButtonCurrency: Array<Currency> = nameButtonCurrency;
 
-  private destroy$: Subject<void> = new Subject();
+  private readonly destroy$: Subject<void> = new Subject();
 
   protected handleValueCodeCurrencyGive(value: string): void {
     this.codeValueGive = value;

@@ -27,7 +27,6 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
   > = {};
 
   public ngOnInit(): void {
-    console.log(this.getIconName, this.giveIconName);
     this.formGroupExchange.controls.formGive.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((): void => {
@@ -35,7 +34,7 @@ export class ExchangeComponent implements OnInit, OnDestroy, OnChanges {
       });
   }
 
-  private destroy$: Subject<void> = new Subject();
+  private readonly destroy$: Subject<void> = new Subject();
 
   public ngOnChanges(): void {
     this.changeValueFormGive();
