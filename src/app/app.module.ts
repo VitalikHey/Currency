@@ -14,7 +14,6 @@ import { NgOptimizedImage } from '@angular/common';
 import { ExchangeComponent } from './component/exchange/exchange.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UiStringComponent } from './component/ui-string/ui-string.component';
 import { ListItemUiComponent } from './component/list-item-component/list-item-ui/list-item-ui.component';
 import { ListItemBuisnessComponent } from './component/list-item-component/list-item-buisness/list-item-buisness.component';
 import { ButtonToggleUiComponent } from './component/button-toggle/button-toggle-ui/button-toggle-ui.component';
@@ -26,7 +25,6 @@ import { ButtonToggleBusinessComponent } from './component/button-toggle/button-
     CurrencyFormComponent,
     ButtonCurrencyComponent,
     ExchangeComponent,
-    UiStringComponent,
     ListItemUiComponent,
     ListItemBuisnessComponent,
     ListItemBuisnessComponent,

@@ -17,7 +17,7 @@ export class ListItemBuisnessComponent {
   protected readonly nameButtonBankListArray: Array<string> =
     nameButtonRusBankList;
 
-  protected addNameSelectedBank(value: string): void {
+  protected addNameSelectedBank = (value: string): void => {
     this.nameSelectedBank.emit(value);
-  }
+  };
 }

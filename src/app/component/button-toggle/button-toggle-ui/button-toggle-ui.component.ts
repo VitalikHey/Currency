@@ -1,9 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
-  Output,
   TemplateRef,
 } from '@angular/core';
 import { Currency } from '../../data-type';
@@ -15,13 +13,6 @@ import { Currency } from '../../data-type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonToggleUiComponent {
-  @Output() public selectedToggleButton: EventEmitter<string> =
-    new EventEmitter();
-
-  @Input() public parentFunction: (
-    value: string,
-    output: EventEmitter<string>,
-  ) => void = (): void => {};
   @Input() public templateButton: TemplateRef<string> | null;
   @Input() public arrayButton: Array<Currency> = [];
 

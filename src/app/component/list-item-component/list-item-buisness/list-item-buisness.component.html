@@ -1,12 +1,11 @@
 <app-list-item-ui
   [arrayNameString]="nameButtonBankListArray"
   [templateString]="bankTemplate"
-  (clickItem)="addNameSelectedBank($event)"
 >
 </app-list-item-ui>
 
 <ng-template #bankTemplate let-nameStringBank let-index='index'>
-  <div class="bank__icon">
+  <div class="bank__icon" (click)="addNameSelectedBank(nameStringBank)">
     <div style="margin-top: 6px">
       <img
         alt="{{ nameStringBank }}"

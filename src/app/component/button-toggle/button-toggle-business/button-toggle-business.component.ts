@@ -18,13 +18,7 @@ export class ButtonToggleBusinessComponent {
 
   protected arrayButtonCurrency: Array<Currency> = nameButtonCurrency;
 
-  protected addSelectedButton(value: string): void {
+  protected processingValueCurrencyCode = (value: string): void => {
     this.selectedButtonCurrency.emit(value);
-  }
-  protected processingValueCurrencyCode(
-    value: string,
-    eventEmitter: EventEmitter<string>,
-  ): void {
-    eventEmitter.emit(value);
-  }
+  };
 }

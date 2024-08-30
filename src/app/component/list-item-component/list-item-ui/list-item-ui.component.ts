@@ -20,8 +20,4 @@ export class ListItemUiComponent {
   constructor() {
     this.templateString = null;
   }
-
-  protected outputEventClick(value: string): void {
-    this.clickItem.emit(value);
-  }
 }

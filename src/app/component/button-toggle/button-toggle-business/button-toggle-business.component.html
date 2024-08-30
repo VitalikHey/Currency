@@ -1,14 +1,12 @@
 <app-button-toggle-ui
-  [parentFunction]="processingValueCurrencyCode"
   [templateButton]="buttonCurrency"
   [arrayButton]="arrayButtonCurrency"
-  (selectedToggleButton)="addSelectedButton($event)"
 ></app-button-toggle-ui>
 
-<ng-template #buttonCurrency let-outputEventClick='outputEventClick' let-eventEmitter='eventEmitter' let-button='$implicit'>
+<ng-template #buttonCurrency let-button='$implicit'>
   <mat-button-toggle
     class="currency__button"
-    (click)="outputEventClick(button.code, eventEmitter)"
+    (click)="processingValueCurrencyCode(button.code)"
   >
     {{ button.name }}
   </mat-button-toggle>
