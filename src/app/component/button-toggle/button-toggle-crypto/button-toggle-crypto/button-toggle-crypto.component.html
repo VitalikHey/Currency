@@ -1,0 +1,15 @@
+<app-button-toggle-ui
+  [templateButton]="buttonCrypto"
+  [arrayButton]="arrayButtonCrypto"
+>
+</app-button-toggle-ui>
+
+<ng-template #buttonCrypto let-cryptoButton>
+  <mat-button-toggle
+    class="currency__button"
+    (click)="processingValueCryptoCode(cryptoButton.name)"
+  >
+    {{ cryptoButton.name }}
+  </mat-button-toggle>
+</ng-template>
+

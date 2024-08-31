@@ -1,0 +1,7 @@
+<mat-button-toggle-group class="currency__button-group">
+  <ng-container *ngFor="let button of arrayButton">
+    <ng-container *ngTemplateOutlet="templateButton; context: {$implicit: button}">
+    </ng-container>
+  </ng-container>
+</mat-button-toggle-group>
+

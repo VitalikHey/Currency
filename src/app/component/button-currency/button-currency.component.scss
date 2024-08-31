@@ -1,0 +1,30 @@
+.currency__form {
+  border-radius: 8px;
+  width: 346px;
+  height: 35px;
+  background: #f4f4f4;
+  margin-left: 24px;
+  margin-right: 27px;
+  margin-top: 85px;
+  position: absolute;
+}
+
+.currency__input {
+  border-radius: 8px;
+  width: 173px;
+  height: 35px;
+  padding: 0 0 0 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  color: #292929;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.currency__input.mat-button-toggle-checked {
+  background-color: #7dbd42;
+  color: white;
+}

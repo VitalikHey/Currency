@@ -1,0 +1,33 @@
+<div class="form-departure__component">
+  <div class="main-title__form">{{ valueTitle }}</div>
+
+  <app-button-currency
+    [nameFirstTemplate]="nameFirstTemplate"
+    [nameSecondTemplate]="nameSecondTemplate"
+    (click)="checkingIconOutput()"
+    (outputValue)="addCryptoOrCurrency($event)"
+  ></app-button-currency>
+
+  <ng-container *ngIf="firstOrSecond === SequenceNumber.first && isShowIconFirstTemplate"
+  >
+    <app-button-toggle-currency
+      (selectedButtonCurrency)="processingValueCurrencyCode($event)"
+    ></app-button-toggle-currency>
+    <app-list-item-bank
+      (nameSelectedBank)="processingValueNameIconBank($event)"
+    ></app-list-item-bank>
+  </ng-container>
+
+  <ng-container *ngIf="firstOrSecond === SequenceNumber.second">
+    <app-button-toggle-crypto
+      (selectedButtonCrypto)="processingValueCurrencyCodeCrypto($event)"
+    >
+    </app-button-toggle-crypto>
+    <ng-container *ngIf="isShowIconSecondTemplate">
+      <app-list-item-crypto
+        (nameSelectedCrypto)="processingValueNameIconCrypto($event)"
+      >
+      </app-list-item-crypto>
+    </ng-container>
+  </ng-container>
+</div>

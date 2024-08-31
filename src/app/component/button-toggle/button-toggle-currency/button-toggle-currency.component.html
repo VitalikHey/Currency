@@ -1,0 +1,13 @@
+<app-button-toggle-ui
+  [templateButton]="buttonCurrency"
+  [arrayButton]="arrayButtonCurrency"
+></app-button-toggle-ui>
+
+<ng-template #buttonCurrency let-button='$implicit'>
+  <mat-button-toggle
+    class="currency__button"
+    (click)="processingValueCurrencyCode(button.code)"
+  >
+    {{ button.name }}
+  </mat-button-toggle>
+</ng-template>

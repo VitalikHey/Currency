@@ -1,0 +1,9 @@
+<mat-selection-list class="scrollable-list">
+  <mat-list-item
+    *ngFor="let nameString of arrayNameString; let i = index"
+    class="mat-list-option"
+  >
+    <ng-container *ngTemplateOutlet="templateString context: {$implicit: nameString, index: i}">
+    </ng-container>
+  </mat-list-item>
+</mat-selection-list>

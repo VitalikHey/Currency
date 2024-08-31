@@ -1,0 +1,126 @@
+.exchange__component {
+  border-radius: 20px;
+  width: 397px;
+  height: 367px;
+  background-color: #ffffff;
+  box-shadow: 0 0 24px 0 rgba(90, 89, 89, 0.1);
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+.exchange__title {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #292929;
+  margin-left: 16px;
+  margin-top: 24px;
+  position: absolute;
+}
+
+.exchange__form-field-give {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  margin-top: 115px;
+  padding-left: 16px !important;
+  margin-left: 16px;
+  border: 1px solid #c3c3c3;
+  border-radius: 12px;
+  width: 349px;
+  height: 56px;
+  background: #f4f4f4;
+}
+
+.exchange__input {
+  margin-left: 14px;
+  width: 150px;
+  height: 40px;
+  background-color: #f4f4f4;
+  outline: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  font-weight: 500;
+  font-size: 16px;
+  color: #292929;
+}
+
+input:hover {
+  outline: none;
+}
+
+.input-give__label {
+  position: absolute;
+  margin-top: 84px;
+  margin-left: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #292929;
+}
+
+.input-get__label {
+  position: absolute;
+  font-weight: 500;
+  font-size: 16px;
+  color: #292929;
+}
+
+.exchange__form-field-get {
+  position: absolute;
+  margin-top: 220px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px !important;
+  margin-left: 16px;
+  border: 1px solid #c3c3c3;
+  border-radius: 12px;
+  width: 349px;
+  height: 56px;
+  background: #f4f4f4;
+}
+
+.currency__output {
+  position: absolute;
+  margin-top: 295px;
+  width: 349px;
+  height: 31px;
+  border-bottom: 1px dashed #5c5c5c;
+  margin-left: 24px;
+}
+
+.input_currency-code {
+  border: none;
+  width: 120px;
+}
+
+.output__title {
+  font-weight: 400;
+  font-size: 12px;
+  color: #5c5c5c;
+}
+
+.currency__output-value {
+  position: absolute;
+  font-weight: 600;
+  font-size: 12px;
+  color: #5c5c5c;
+  margin-left: 160px;
+  margin-top: 8px;
+}
+
+.exchange__input[type="number"]::-webkit-inner-spin-button,
+.exchange__input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.exchange__input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.replace-currency__button {
+  position: absolute;
+  margin-left: 330px;
+  margin-top: 12px;
+  border-radius: 60px;
+}

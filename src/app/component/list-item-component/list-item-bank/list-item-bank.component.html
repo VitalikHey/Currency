@@ -1,0 +1,19 @@
+<app-list-item-ui
+  [arrayNameString]="nameButtonBankListArray"
+  [templateString]="bankTemplate"
+>
+</app-list-item-ui>
+
+<ng-template #bankTemplate let-nameStringBank let-index='index'>
+  <div class="bank__icon" (click)="addNameSelectedBank(nameStringBank)">
+    <div style="margin-top: 6px">
+      <img
+        alt="{{ nameStringBank }}"
+        width="32"
+        height="32"
+        [ngSrc]="'assets/icons/currency/' + nameStringBank + '.svg'"
+      />
+    </div>
+    <span class="bank-name">{{ nameButtonRusBankListRussian[index] }}</span>
+  </div>
+</ng-template>
