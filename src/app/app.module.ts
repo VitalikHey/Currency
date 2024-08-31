@@ -14,10 +14,12 @@ import { NgOptimizedImage } from '@angular/common';
 import { ExchangeComponent } from './component/exchange/exchange.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ListItemUiComponent } from './component/list-item-component/list-item-ui/list-item-ui.component';
-import { ListItemBuisnessComponent } from './component/list-item-component/list-item-buisness/list-item-buisness.component';
-import { ButtonToggleUiComponent } from './component/button-toggle/button-toggle-ui/button-toggle-ui.component';
-import { ButtonToggleBusinessComponent } from './component/button-toggle/button-toggle-business/button-toggle-business.component';
+import { ListItemUiComponent } from './component/ui-components/list-item-ui/list-item-ui.component';
+import { ListItemBankComponent } from './component/list-item-component/list-item-bank/list-item-bank.component';
+import { ButtonToggleUiComponent } from './component/ui-components/button-toggle-ui/button-toggle-ui.component';
+import { ButtonToggleCurrencyComponent } from './component/button-toggle/button-toggle-currency/button-toggle-currency.component';
+import { ButtonToggleCryptoComponent } from './component/button-toggle/button-toggle-crypto/button-toggle-crypto/button-toggle-crypto.component';
+import { ListItemCryptoComponent } from './component/list-item-component/list-item-crypto/list-item-crypto/list-item-crypto.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { ButtonToggleBusinessComponent } from './component/button-toggle/button-
     ButtonCurrencyComponent,
     ExchangeComponent,
     ListItemUiComponent,
-    ListItemBuisnessComponent,
-    ListItemBuisnessComponent,
+    ListItemBankComponent,
+    ListItemBankComponent,
     ButtonToggleUiComponent,
-    ButtonToggleBusinessComponent,
+    ButtonToggleCurrencyComponent,
+    ButtonToggleCryptoComponent,
+    ListItemCryptoComponent,
   ],
   imports: [
     BrowserModule,

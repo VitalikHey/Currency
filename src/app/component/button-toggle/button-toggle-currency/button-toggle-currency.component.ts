@@ -7,12 +7,12 @@ import {
 import { Currency, nameButtonCurrency } from '../../data-type';
 
 @Component({
-  selector: 'app-button-toggle-business',
-  templateUrl: './button-toggle-business.component.html',
-  styleUrls: ['./button-toggle-business.component.scss'],
+  selector: 'app-button-toggle-currency',
+  templateUrl: './button-toggle-currency.component.html',
+  styleUrls: ['./button-toggle-currency.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonToggleBusinessComponent {
+export class ButtonToggleCurrencyComponent {
   @Output() public selectedButtonCurrency: EventEmitter<string> =
     new EventEmitter();
 

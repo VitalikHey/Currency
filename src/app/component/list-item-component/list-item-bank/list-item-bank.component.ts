@@ -5,11 +5,11 @@ import {
 } from '../../data-type';
 
 @Component({
-  selector: 'app-list-item-buisness',
-  templateUrl: './list-item-buisness.component.html',
-  styleUrls: ['./list-item-buisness.component.scss'],
+  selector: 'app-list-item-bank',
+  templateUrl: './list-item-bank.component.html',
+  styleUrls: ['./list-item-bank.component.scss'],
 })
-export class ListItemBuisnessComponent {
+export class ListItemBankComponent {
   @Output() nameSelectedBank: EventEmitter<string> = new EventEmitter();
 
   protected readonly nameButtonRusBankListRussian: Array<string> =

@@ -1,0 +1,19 @@
+<app-list-item-ui
+  [arrayNameString]="nameButtonCryptoListCode"
+  [templateString]="cryptoTemplate"
+>
+</app-list-item-ui>
+
+<ng-template #cryptoTemplate let-nameStringCrypto let-index='index'>
+  <div class="bank__icon" (click)="addNameSelectedCrypto(nameStringCrypto)">
+    <div style="margin-top: 6px">
+      <img
+        alt="{{ nameStringCrypto }}"
+        width="32"
+        height="32"
+        [ngSrc]="'assets/icons/currency/' + nameStringCrypto + '.svg'"
+      />
+    </div>
+    <span class="bank-name">{{ nameButtonCryptoList[index] }}</span>
+  </div>
+</ng-template>

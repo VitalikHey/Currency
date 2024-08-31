@@ -56,7 +56,9 @@ export interface FormGroupExchange {
   formGet: FormControl<number | null>;
 }
 
-export const nameCryptoArray: Array<string> = ['Криптовалюта'];
+export const nameCryptoArray: Array<Currency> = [
+  { name: 'Криптовалюта', code: 'crypto' },
+];
 
 export const nameButtonCurrency: Array<Currency> = [
   { name: 'Рубли', code: 'RUB' },
@@ -106,21 +108,36 @@ export const nameButtonRusBankListRussian: Array<string> = [
   'YouMoney',
 ];
 
-export const nameButtonCryptoList: Array<Currency> = [
-  { name: 'Aidos', code: CurrencyCodes.ADA },
-  { name: 'Binance', code: CurrencyCodes.BTN },
-  { name: 'BitcoinSV', code: CurrencyCodes.BTC },
-  { name: 'Cosmos', code: CurrencyCodes.AUD },
-  { name: 'Dawn', code: CurrencyCodes.DAI },
-  { name: 'Decentraland', code: CurrencyCodes.MAD },
-  { name: 'Ethereum', code: CurrencyCodes.ETH },
-  { name: 'Insight', code: CurrencyCodes.IDR },
-  { name: 'Kambria', code: CurrencyCodes.CAD },
-  { name: 'Kusama', code: CurrencyCodes.KMF },
-  { name: 'Nebulas', code: CurrencyCodes.NGN },
-  { name: 'Polis', code: CurrencyCodes.DOT },
-  { name: 'Raydium', code: CurrencyCodes.RON },
-  { name: 'Tether', code: CurrencyCodes.THB },
-  { name: 'Wagerr', code: CurrencyCodes.XOF },
-  { name: 'Xensor', code: CurrencyCodes.XRP },
+export const nameButtonCryptoList: Array<string> = [
+  'Aidos',
+  'Binance',
+  'BitcoinSV',
+  'Cosmos',
+  'Dawn',
+  'Decentraland',
+  'Ethereum',
+  'Insight',
+  'Kusama',
+  'Nebulas',
+  'Polis',
+  'Raydium',
+  'Tether',
+  'Wagerr',
+];
+
+export const nameButtonCryptoListCode: Array<string> = [
+  CurrencyCodes.ADA,
+  CurrencyCodes.BTC,
+  CurrencyCodes.BTN,
+  CurrencyCodes.AUD,
+  CurrencyCodes.DAI,
+  CurrencyCodes.MAD,
+  CurrencyCodes.ETH,
+  CurrencyCodes.IDR,
+  CurrencyCodes.KMF,
+  CurrencyCodes.NGN,
+  CurrencyCodes.DOT,
+  CurrencyCodes.RON,
+  CurrencyCodes.THB,
+  CurrencyCodes.XOF,
 ];

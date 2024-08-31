@@ -1,28 +1,16 @@
 <div style="display: flex">
   <app-currency-form
     [valueTitle]="'Вы отправили'"
-    [firstTemplate]="bankTemplate"
-    [secondTemplate]="cryptoTemplate"
-    [arrayNamesForFirstTemplate]="nameButtonRusBankList"
-    [arrayNamesForSecondTemplate]="nameButtonCryptoList"
     [nameFirstTemplate]="'Валюта'"
     [nameSecondTemplate]="'Криптовалюта'"
-    [nameFilterOption]="nameButtonCurrency"
-    [nameSecondOption]="arrayNameCrypto"
     (nameIcon)="handleValueNameIconGive($event)"
     (codeCurrency)="handleValueCodeCurrencyGive($event)"
   ></app-currency-form>
   <app-currency-form
     style="margin-left: -120px"
     [valueTitle]="'Вы получаете'"
-    [firstTemplate]="bankTemplate"
-    [secondTemplate]="cryptoTemplate"
-    [arrayNamesForFirstTemplate]="nameButtonRusBankList"
-    [arrayNamesForSecondTemplate]="nameButtonCryptoList"
     [nameFirstTemplate]="'Валюта'"
     [nameSecondTemplate]="'Криптовалюта'"
-    [nameFilterOption]="nameButtonCurrency"
-    [nameSecondOption]="arrayNameCrypto"
     (nameIcon)="handleValueNameIconGet($event)"
     (codeCurrency)="handleValueCodeCurrencyGet($event)"
   ></app-currency-form>
@@ -35,51 +23,4 @@
   ></app-exchange>
 </div>
 
-
-<app-button-toggle-business
-  (selectedButtonCurrency)="handleValueCodeCurrencyGive($event)"
->
-</app-button-toggle-business>
-
-<app-list-item-buisness
-  (nameSelectedBank)="handleValueNameIconGive($event)"
->
-</app-list-item-buisness>
-
-
-<ng-template #bankTemplate let-eventEmitter='eventEmitter' let-outputFunction>
-  <mat-selection-list class="scrollable-list">
-    <mat-list-item
-      *ngFor="let nameStringBank of nameButtonRusBankList; let i = index"
-      class="mat-list-option"
-      (click)="outputFunction(nameStringBank, eventEmitter)"
-    >
-      <div class="bank__icon">
-        <div style="margin-top: 6px">
-          <img
-            alt="{{ nameStringBank }}"
-            width="32"
-            height="32"
-            [ngSrc]="'assets/icons/currency/' + nameStringBank + '.svg'"
-          />
-        </div>
-        <span class="bank-name">{{ nameButtonRusBankListRussian[i] }}</span>
-      </div>
-    </mat-list-item>
-  </mat-selection-list>
-</ng-template>
-
-<ng-template #cryptoTemplate let-nameCrypto let-index="index">
-  <div class="bank__icon">
-    <div style="margin-top: 6px">
-      <img
-        width="32"
-        height="32"
-        alt="{{ nameCrypto.name }}"
-        [ngSrc]="'assets/icons/currency/' + nameCrypto.name + '.svg'"
-      />
-    </div>
-    <span class="bank-name">{{ nameButtonCryptoList[index].name }}</span>
-  </div>
-</ng-template>
 
